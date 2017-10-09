@@ -13,13 +13,15 @@ fd-app {
     padding: 50px 0;
     transition: all 750ms ease;
     flex: 1;
+    align-self: center;
     
     > div {
         display: inline-flex;
         //width: 850px;
-        margin-left: 50%;
-        transform: translateX(-50%);
+        //margin-left: 50%;
+        //transform: translateX(-50%);
         transition: all 750ms ease;
+        height: 100%;
     }
     
     .profile {
@@ -27,13 +29,14 @@ fd-app {
         width: 350px;
         height: 350px;
         border-radius: 50%;
-        display: block;
+        display: flex;
         background-image: url('assets/profile.jpg');
         background-position: center center;
         background-size: cover;
         border: 3px solid $gray-light;
         margin: 0 $spacing-l;
         transition: all 750ms ease;
+        align-self: center;
     }
     
     .contact {
@@ -76,6 +79,7 @@ fd-app {
     padding: $spacing-s $spacing-m;
     border-bottom: 1px solid $gray-lighter;
     flex: 0;
+    width: 100%;
     
     > div {
         width: 100%;
