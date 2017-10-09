@@ -1,0 +1,151 @@
+@import "../../constants";
+
+/deep/
+fd-timeline {
+    display: block;
+    padding: $spacing 0;
+    margin: 0 $spacing-m;
+    
+    & > div {
+        border: $border-width solid $gray-lighter;
+        border-radius: $border-radius;
+        padding: $spacing-m $spacing 0 $spacing;
+        background-color: $gray-lightest;
+        position: relative;
+        min-width: 600px;
+    }
+}
+
+.timeline {
+    height: $spacing;
+    width: 100%;
+    display: block;
+    position: relative;
+    margin-bottom: $spacing-m;
+    z-index: 1;
+    
+    .episode {
+        height: 100%;
+        background-color: transparentize( $brand-primary, 0.5 );
+        border: 1px solid rgba(255,255,255,0.7);
+        border-radius: $border-radius;
+        margin: 0 1px;
+        cursor: pointer;
+        position: absolute;
+        transition: background-color 300ms ease;
+        
+        &:hover {
+            background-color: transparentize( $brand-primary, 0.3 );
+        }
+        
+        &.selected {
+            background-color: transparentize( $brand-success, 0.3 );
+        }
+    }
+}
+
+.timeline-map {
+    width: 100%;
+    
+    .year {
+        display: inline-block;
+        position: relative;
+        padding-top: 56px;
+        margin-top: -56px;
+        
+        &:nth-child(even) {
+            background-color: #fff;
+        }
+        
+        & > span {
+            display: block;
+            text-align: center;
+            font-size: 0.8em;
+        }
+    }
+    
+    .month-list {
+        
+        & > span {
+            font-size: 0.5em;
+            display: inline-block;
+            text-align: center;
+            position: relative;
+            
+            &:before {
+                content: "";
+                position: absolute;
+                left: 50%;
+                top: -65px;
+                height: 60px;
+                width: $border-width;
+                display: block;
+                background-color: transparentize($gray-lighter, 0.5);
+            }
+            
+            &:nth-child( even )
+            {
+                opacity: 0;
+            }
+        }
+    }
+}
+
+@media( max-width: 1000px )
+{
+    .month-list {
+        display: none;
+    }
+}
+
+.episode-preview {
+    position: absolute;
+    bottom: 0;
+    transform: translateY( 100% );
+    padding-top: $spacing;
+    margin-left: -1 * ( $spacing-m + $border-width + $spacing );
+    width: 350px;
+    z-index: 101;
+    
+    & > div {
+        border: $border-width solid $border-color;
+        border-radius: $border-radius;
+    }
+    
+    .preview-date {
+        display: block;
+        font-size: .8em;
+        font-weight: bold;
+        background-color: $gray-lightest;
+        padding: $spacing-xs $spacing-m;
+        border-bottom: $border-width solid $border-color;
+    }
+    
+    .preview-content {
+        display: block;
+        padding: $spacing-xs $spacing-m $spacing-s $spacing-m;
+        background-color: #fff;
+    }
+}
+
+@media( max-width: 601px )
+{
+    /deep/
+    fd-timeline {
+        overflow-y: auto;
+    }
+    
+    .episode-preview {
+        display: none !important;
+    }
+}
+
+.episode-preview-pointer {
+    width: 1px;
+    position: fixed;
+    display: block;
+    background: $border-color;
+    z-index: 100;
+    margin-top: $border-width;
+    pointer-events: none;
+}

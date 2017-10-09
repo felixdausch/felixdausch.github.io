@@ -1,0 +1,42 @@
+[
+  {
+    "name": "Ausbildung",
+    "episodes": [
+      {
+        "start": "1998-01-01",
+        "end": "2009-01-01",
+        "label": "Schulische Ausbildung, Abitur"
+      },
+      {
+        "start": "2009-05-01",
+        "end": "2011-05-31",
+        "label": "Studium der Elektrotechnik"
+      },
+      {
+        "start": "2011-06-01",
+        "end": "2017-08-01",
+        "label": "Studium der Informatik"
+      }
+    ]
+  },
+  {
+    "name": "Berufliche Tätigkeit",
+    "episodes": [
+      {
+        "start": "2011-01-01",
+        "end": "2013-08-31",
+        "label": "Teilzeitanstellung im büro für eventmarketing"
+      },
+      {
+        "start": "2013-09-01",
+        "end": "2016-07-31",
+        "label": "Teilzeitanstellung bei plentymarkets"
+      },
+      {
+        "start": "2016-08-01",
+        "end": null,
+        "label": "Vollzeitanstellung bei plentymarkets"
+      }
+    ]
+  }
+]

@@ -1,0 +1,38 @@
+<div class="container">
+    <div class="container-inner">
+        <h1>Software-Entwickler (Teilzeit) bei der plentymarkets GmbH</h1>
+        <div>
+            <div class="content">
+                <p><b>Aufgabenbereiche</b></p>
+                <ul>
+                    <li>Wartung & Pflege der firmeneigenen Website (<a href="http://www.plentymarkets.com" target="_blank">www.plentymarkets.com</a>)</li>
+                    <li>
+                        Entwicklung des Standard-Shop-Designs <a href="" target="_blank">Callisto Light</a>
+                        <span class="read-more" (click)="additionalContent = 'callisto'">[mehr...]</span>
+                    </li>
+                </ul>
+                
+                <p><b>Verwendete Technologien & Sprachen</b></p>
+                <ul>
+                    <li>HTML5 & CSS3, basierend auf <b>Twitter Bootstrap 3</b></li>
+                    <li>JavaScript mit <b>jQuery</b></li>
+                    <li>Qualitätssicherung und Automatisierung mit <b>Grunt</b> sowie <b>Karma/ Jasmine</b></li>
+                </ul>
+            </div>
+            
+            <div class="content" *ngIf="additionalContent === 'callisto'">
+                <p><b>Callisto Light & plentymarkets CMS Tools</b></p>
+                <p>
+                    Mit <em>Callisto Light</em> wurde das Standard Shop-Design vom plentymarkets Webshops entwickelt.<br />
+                    Das Projekt basiert auf dem internen Content-Management-System von plentymarkets. Für ein responsives Layout wurde die UI auf Basis des
+                    CSS-Frameworks <a href="https://getbootstrap.com/docs/3.3/" target="_blank">Twitter Bootstrap 3</a>,
+                    für dynamische Funktionalitäten und die asynchrone Kommunikation mit dem Webserver die
+                    <a href="https://github.com/plentymarkets/plenty-cms-library" target="_blank">plentymarkets CMS-Tools</a> entwickelt.
+                    Diese JavaScript-Bibliothek basiert auf <a href="https://jquery.com/" target="_blank">jQuery</a>
+                    und implementiert u.a. einen eigenen Dependency-Injection-Mechanismus sowie Möglichkeiten
+                    zur direkten Verknüpfung von UI-Elementen mit bereitgestellten Funktionen direkt im Markup.
+                </p>
+            </div>
+        </div>
+    </div>
+</div>

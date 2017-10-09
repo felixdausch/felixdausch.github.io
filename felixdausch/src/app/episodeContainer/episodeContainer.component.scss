@@ -1,0 +1,105 @@
+@import "../../constants";
+
+/deep/
+fd-episode-container {
+    
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    
+    &.hidden {
+        display: none;
+    }
+    
+    > * {
+        display: block;
+        width: 100%;
+        height: 100%;
+    }
+}
+
+/deep/
+.container {
+    
+    width: 100%;
+    height: 100%;
+    padding: $spacing-l $spacing-m;
+    
+    .container-inner {
+        position: relative;
+        padding: $spacing-m $spacing;
+        background-color: $gray-lightest;
+        border-radius: $border-radius;
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        
+        &:before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: $spacing-s;
+            height: 100%;
+            display: block;
+            background-color: $brand-success;
+        }
+        
+        > div {
+            display: flex;
+            flex-direction: row;
+            height: 100%;
+        }
+    }
+    
+    h1 {
+        margin: 0;
+        margin-bottom: $spacing;
+        width: 100%;
+    }
+    
+    .content {
+        flex: 1;
+        max-width: 50%;
+        overflow-y: auto;
+        margin-right: $spacing-l;
+        
+        .read-more {
+            font-size: .8em;
+            color: $brand-primary;
+            cursor: pointer;
+        }
+    }
+    
+    .screenshot-list {
+        display: flex;
+        
+        .screenshot {
+            flex: 1;
+            height: 120px;
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center center;
+        }
+    }
+}
+
+@media( max-width: 920px ) {
+    /deep/
+    .container {
+        
+        .container-inner {
+            
+            > div {
+                display: block;
+                height: auto;
+                flex: 1;
+                overflow-y: auto;
+            }
+        }
+        
+        .content {
+            max-width: 100%;
+        }
+    }
+}

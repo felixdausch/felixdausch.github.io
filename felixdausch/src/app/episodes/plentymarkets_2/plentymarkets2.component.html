@@ -1,0 +1,94 @@
+<div class="container">
+    <div class="container-inner">
+        <h1>Software-Entwickler (Vollzeit) bei der plentymarkets GmbH</h1>
+        <div>
+            <div class="content">
+                <p><b>Realisierte Projekte</b></p>
+                <ul>
+                    <li>
+                        Entwurf und Entwicklung eines Standard-Shop-Designs auf
+                        Basis neu geschaffener Plugin-Schnittstellen innerhalb von plentymarkets.
+                        <span class="read-more" (click)="additionalContent = 'ceres'">[mehr...]</span>
+                    </li>
+                    <li>
+                        Vermittlung von Wissen an externe Entwickler im Rahmen öffentlicher Veranstaltungen.
+                        <span class="read-more" (click)="additionalContent = 'ohk'">[mehr...]</span>
+                    </li>
+                    <li>
+                        Entwicklung eines Prozesses zur automatischen Generierung des Online-Handbuchs aus
+                        <a href="http://www.methods.co.nz/asciidoc/" target="_blank">AsciiDoc-Dokumenten</a>.
+                        <span class="read-more" (click)="additionalContent = 'manual'">[mehr...]</span>
+                    </li>
+                    <li>
+                        Entwicklung von Angular 2 - Komponenten für das plentymarkets Backend
+                        <span class="read-more" (click)="additionalContent = 'terra'">[mehr...]</span>
+                    </li>
+                </ul>
+                
+                <p><b>Eingesetzte Technologien</b></p>
+                <ul>
+                    <li>
+                        <a href="http://hacklang.org/" target="_blank">Hack</a>,
+                        php 7
+                    <li><a href="https://twig.symfony.com/" target="_blank">Twig</a></li>
+                    <li><a href="https://vuejs.org/" target="_blank">Vue.js</a></li>
+                    <li>Node.js</li>
+                    <li><a href="http://angular.io">Angular 2</a> & TypeScript</li>
+                    <li>Qualitätssicherung und Prozessautomatisierung mit Gulp, Webpack und TSLint</li>
+                </ul>
+            </div>
+            
+            <div class="content" *ngIf="!additionalContent">&nbsp;</div>
+            
+            <div class="content" *ngIf="additionalContent === 'ceres'">
+                <p><b>Entwurf der Architektur</b></p>
+                <p>
+                    Seit 2016 arbeitet plentymarkets an zusätzlichen Schnittstellen, um die eigene Software für Erweiterungen
+                    zu öffnen und für externe Entwickler zugänglich zu machen. Auf Basis dieser Schnittstellen wurden die Plugins
+                    <a href="https://marketplace.plentymarkets.com/plugins/templates/Ceres_4697" target="_blank">Ceres</a> und
+                    <a href="https://marketplace.plentymarkets.com/plugins/templates/IO_4696" target="_blank">IO</a> entwickelt,
+                    die gemeinsam das neue Standard-Design für plentymarkets Webshops darstellen.
+                </p>
+                <p>
+                    Das Plugin <em>IO</em> umfasst dabei die serverseitige Logik und wurde ursprünglich in der Sprache Hack, später aber in php7 entwickelt.
+                    (<a href="https://github.com/plentymarkets/plugin-io" target="_blank">zu GitHub</a>)
+                </p>
+                <p>
+                    Darauf aufbauend liefert das Plugin <em>Ceres</em> das eigentliche Shop-Frontend aus.
+                    Dieses Projekt wurde auf Bootstrap 4 als UI-Framework sowie auf Vue.js als JavaScript-Framework aufgebaut.
+                    (<a href="https://github.com/plentymarkets/plugin-ceres" target="_blank">zu GitHub</a>)
+                </p>
+            </div>
+            
+            <div class="content" *ngIf="additionalContent === 'ohk'">
+                <p><b>Einführung in Twig und Vue.js</b> (Vortrag* auf dem Online-Händler-Kongress 2017)</p>
+                <iframe src="https://player.vimeo.com/video/208659468" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+                <p>
+                    <small>*) Inhalte zum Thema SASS von Jan Mense, Frontend Studios</small>
+                </p>
+            </div>
+            
+            <div class="content" *ngIf="additionalContent === 'manual'">
+                <p><b>Überführung bestehender Inhalte nach AsciiDoc</b></p>
+                <p>
+                    Im ersten Schritt des Projekts mussten bestehende Inhalte des Online-Handbuchs aus dem Content-Management-System von plentymarktes exportiert und
+                    aus dem vorliegenden Format (HTML mit Template-Logik) nach AsciiDoc überführt werden, um diese Dokumente mit GIT verwalten zu können.<br />
+                    Im nächsten Schritt wurde ein Prozess geschaffen, um diese Dateien in ein entsprechendes Plugin zu überführen,
+                    um auf diesem Weg wieder eine darstellbare Online-Version der Inhalte zu erhalten.
+                </p>
+                <p>
+                    Beide Prozesse wurden mit Node.js realisiert.
+                </p>
+            </div>
+            
+            <div class="content" *ngIf="additionalContent === 'terra'">
+                <p><b>Entwicklung wiederverwendbarer Angular-Komponenten</b></p>
+                <p>
+                    Um eine Erweiterungen der eigenen Software auch im Bereich des Backends einfach zu ermöglichen,
+                    stellt plentymarkets eine <a href="https://github.com/plentymarkets/terra-components" target="_blank">Sammlung wiederverwendbarer Angular-Komponenten</a>
+                    für die Entwicklung von Erweiterungen zur Verfügung. Dabei steht die Wiederverwendbarkeit der Komponenten für verschiedenste Anwendungsfälle besonders im Fokus.
+                </p>
+            </div>
+        </div>
+    </div>
+</div>

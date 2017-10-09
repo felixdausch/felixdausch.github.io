@@ -1,0 +1,35 @@
+<div class="header" [class.small]="selectedEpisode" (click)="selectedEpisode = null">
+    <div>
+        <div class="profile"></div>
+        <div class="contact">
+            <div>
+                <h1>
+                    Felix Dausch
+                    <span>*25. September 1989</span>
+                </h1>
+                
+                <p class="mail">
+                    <a href="mailto:felix.dausch@web.de">felix.dausch@web.de</a>
+                </p>
+                
+                <div class="hidden-small">
+                    <hr>
+                    
+                    <p class="title">Bachelor of Science, Informatik</p>
+                    <p class="job">
+                        Software-Entwickler bei
+                        <a href="http://www.plentymarkets.com/" target="_blank">plentymarkets GmbH</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="timeline-wrapper">
+    <fd-timeline [(selectedEpisode)]="selectedEpisode"></fd-timeline>
+    <span class="timeline-hint" *ngIf="!selectedEpisode">&mdash; Für weitere Informationen Abschnitt anklicken &mdash;</span>
+</div>
+
+<fd-episode-container [episode]="selectedEpisode" [class.hidden]="!selectedEpisode"></fd-episode-container>
+

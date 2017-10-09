@@ -1,0 +1,48 @@
+<div class="container">
+    <div class="container-inner">
+        <h1>Tätigkeiten im büro für eventmarketing</h1>
+        <div>
+            <div class="content">
+                <p><b>Kundenkontakt und -betreuung</b></p>
+                <ul>
+                    <li>Promotion & Messebau</li>
+                    <li>Anleitung & Führung von Segway-Touren</li>
+                </ul>
+                
+                <p><b>Web-Entwicklung</b></p>
+                <ul>
+                    <li>
+                        Entwicklung & Pflege des firmeneigenen Internetauftritts
+                        (<a href="http://www.eventbuero.de" target="_blank">www.eventbuero.de</a>) als individuelles
+                        <a href="https://de.wordpress.com/" target="_blank">Wordpress</a>-Theme.
+                    </li>
+                    <li>
+                        Entwicklung der Website <a href="http://www.stero-tours.de" target="_blank">www.stero-tours.de</a>
+                        inklusive individuellem Buchungssystem <span class="read-more" (click)="additionalContent = 'stero'">[mehr...]</span>
+                    </li>
+                </ul>
+            </div>
+    
+            <div class="content" *ngIf="additionalContent === 'stero'">
+                <p><b>Wordpress-Plugin: Buchungssystem für Segway-Touren</b></p>
+                <p>
+                    Neben dem Theme der Seite wurde ein individuelles Buchungssystem für Segway-Touren entwickelt.
+                    Dafür wurde neben dem Reservierungsprozess im Frontend auch das Backend von Wordpress erweitert.
+                </p>
+    
+                <div class="screenshot-list m-t">
+                    <a class="screenshot stero-01" href="assets/stero-01.png" target="_blank"></a>
+                    <a class="screenshot stero-02" href="assets/stero-02.png" target="_blank"></a>
+                </div>
+                
+                <p><b>Verwendete Technologien</b></p>
+                <ul>
+                    <li>Wordpress</li>
+                    <li>SQL & PHP5</li>
+                    <li>JavaScript / jQuery</li>
+                    <li>Twitter Bootstrap 3 (LESS)</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

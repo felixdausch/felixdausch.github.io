@@ -1,0 +1,36 @@
+<div>
+    <div class="timeline" *ngFor="let timeline of timelines.timelines">
+        <span class="episode"
+              *ngFor="let episode of timeline.episodes"
+              [class.selected]="selectedEpisode === episode"
+              [style.left.%]="dateToWidth(episode.start)"
+              [style.right.%]="100 - dateToWidth(episode.end)"
+              (click)="selectEpisode($event, episode)"
+              (mousemove)="showPreview($event, episode)"
+              (mouseleave)="showPreview($event, null)">
+        </span>
+    </div>
+    
+    <div class="timeline-map">
+        <div *ngFor="let year of years" class="year" [style.width.%]="months[year].length * stepSize">
+            <div class="month-list">
+                <span *ngFor="let month of months[year]" [style.width.%]="100 / months[year].length">{{ month }}</span>
+            </div>
+            <span>{{ year }}</span>
+        </div>
+    </div>
+    
+    <i class="episode-preview-pointer"
+       *ngIf="previewEpisode"
+       [style.left.px]="previewCursorPosition.x"
+       [style.top.px]="previewCursorPosition.y"
+       [style.height.px]="previewCursorPosition.h"></i>
+    
+    <div class="episode-preview"
+         [style.left.px]="previewPosition" #previewContainer>
+        <div *ngIf="previewEpisode">
+            <span class="preview-date">{{ previewEpisode.start | moment }} - {{ previewEpisode.end | moment }}</span>
+            <span class="preview-content" [innerHTML]="previewEpisode.label"></span>
+        </div>
+    </div>
+</div>

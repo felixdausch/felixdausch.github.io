@@ -1,0 +1,61 @@
+<div class="container">
+    <div class="container-inner">
+        <h1>Studium der Informatik, Universität Kassel</h1>
+        <div>
+            <div class="content">
+                <p><b>Erlernte Sprachkenntnisse</b></p>
+                <ul>
+                    <li>
+                        Java, C & C++
+                    </li>
+                </ul>
+                
+                <p><b>Schwerpunkt des Hauptstudiums</b></p>
+                <ul>
+                    <li>
+                        Software Engineering
+                    </li>
+                </ul>
+                
+                <p><b>Thema der Abschlussarbeit</b></p>
+                <ul>
+                    <li>
+                        Entwicklung einer Desktopanwendung mithilfe von Webtechnologien
+                        zur Zusammenführung von agiler Softwareentwicklung nach Scrum
+                        mit einer Versionsverwaltung über GIT.
+                        <span class="read-more" (click)="additionalContent = 'marathon'">[mehr...]</span>
+                    </li>
+                </ul>
+                
+                <p><b>Abschluss</b></p>
+                <ul>
+                    <li>Bachelor of Science (B.Sc.) mit der Note 1,8</li>
+                </ul>
+            </div>
+            
+            <div class="content" *ngIf="additionalContent === 'marathon'">
+                <div>
+                    <b>Projektbeschreibung</b><br />
+                    Im Rahmen der Bachelorarbeit wurde für die plentymarkets GmbH in Zusammenarbeit
+                    mit einem weiteren Bachelor-Studenten eine eigenständige Desktopanwendung entwickelt.<br />
+                    Die Anwendung wurde mithilfe der JavaScript-Frameworks <a href="https://electron.atom.io/" target="_blank">electron</a>
+                    und <a href="https://angular.io/" target="_blank">Angular 2</a> entwickelt.
+                    Ziel des Projekts war eine Anwendung, die es ermöglicht, gängige Arbeitsprozesse im Umgang mit der Versionsverwaltung durch GIT
+                    hinter der Projektverwaltung nach Scrum zu automatisieren.
+                </div>
+                
+                <div class="m-t">
+                    <b>Schwerpunkt innerhalb des Team-Projekts</b><br />
+                    Entwurf und Entwicklung einer erweiterbaren Anwendungsarchitektur, die eine nachträgliche Anbindung von Datenbank-Servern
+                    oder die Integration zusätzlicher Komponenten als eigenständige Erweiterungen ermöglicht.
+                </div>
+                
+                <div class="screenshot-list m-t">
+                    <a class="screenshot marathon-01" href="assets/marathon-01.png" target="_blank"></a>
+                    <a class="screenshot marathon-02" href="assets/marathon-02.png" target="_blank"></a>
+                    <a class="screenshot marathon-03" href="assets/marathon-03.png" target="_blank"></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
