@@ -16,7 +16,8 @@
         <div class="container">
             <div class="row">
                 <div class="col-12">
-                    <video id="player" controls class="w-100" tabindex="-1" src="http://dragonball-stream.com/data/se/an/dbz/vid/72.mp4"></video>
+                    <video id="player" class="w-100"></video>
+                    <audio id="playback" class="d-none"></audio>
                 </div>
             </div>
 
@@ -49,6 +50,7 @@
             (function() {
                 var STORAGE_KEY = "db_video_id";
                 var player = document.getElementById("player");
+                var playback = document.getElementById("playback");
                 var controls = {
                     back: document.getElementById("back"),
                     play: document.getElementById("play"),
@@ -59,20 +61,49 @@
                 var running = false;
                 var appActive = navigator.userAgent.indexOf('cordova-amazon-fireos') < 0;
 
+                player.ontimeupdate = function()
+                {
+                    if(Math.abs(player.currentTime - playback.currentTime) > 0.3)
+                    {
+                        playback.currentTime = player.currentTime;
+                    }
+                }
+
+                player.onplay = function()
+                {
+                    if(running) playback.play();
+                }
+
+                player.onseeked = function()
+                {
+                    if(running) playback.play();
+                }
+
+                player.onpause = function()
+                {
+                    playback.pause();
+                }
+
+                player.volume = 0;
+
                 function start()
                 {
                     if(!appActive) return;
                     running = true;
                     localStorage.setItem(STORAGE_KEY, videoId);
                     player.src = "http://dragonball-stream.com/data/se/an/dbz/vid/" + videoId + ".mp4";
-                    player
-                        .play()
-                        .then(function() 
+                    playback.src = "http://dragonball-stream.com/data/se/an/dbz/aud/0/" + videoId + ".ogg";
+
+                    Promise.all([
+                        player.play(),
+                        playback.play()
+                    ]).then(function() 
                         {
                             controls.play.classList.add("d-none");
                             controls.stop.classList.remove("d-none");
                             player.requestFullscreen();
                             player.currentTime = 60;
+                            player.controls = true
 
                             player.onended = function(evt)
                             {
@@ -141,7 +172,7 @@
                     {
                         player.currentTime -= 10;
                     }
-                    else if(evt.keyCode ==== 39)
+                    else if(evt.keyCode === 39)
                     {
                         player.currentTime += 10;
                     }
