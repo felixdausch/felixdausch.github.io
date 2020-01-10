@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en" class="align-items-center d-flex flex-row h-100">
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <script src="https://resources.amazonwebapps.com/v1/latest/Amazon-Web-App-API.min.js"></script>
+
+        <title>Dragonball Player</title>
+    </head>
+    <body class="w-100">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <video id="player" controls class="w-100" tabindex="-1" src="http://dragonball-stream.com/data/se/an/dbz/vid/72.mp4"></video>
+                </div>
+            </div>
+
+            <div class="row pt-3">
+                <div class="col">
+                    <button id="back" class="btn btn-secondary btn-lg btn-block">
+                        <i class="fa fa-step-backward"></i>
+                    </button>
+                </div>
+
+                <div class="col">
+                    <button id="play" class="btn btn-primary btn-lg btn-block d-none">
+                        <i class="fa fa-play"></i>
+                    </button>
+                    <button id="stop" class="btn btn-primary btn-lg btn-block d-none mt-0">
+                        <i class="fa fa-stop"></i>
+                    </button>
+                </div>
+
+                <div class="col">
+                    <button id="next" class="btn btn-secondary btn-lg btn-block">
+                        <i class="fa fa-step-forward"></i>
+                    </button>
+                </div>
+
+            </div>
+        </div>
+
+        <script>
+            (function() {
+                var STORAGE_KEY = "db_video_id";
+                var player = document.getElementById("player");
+                var controls = {
+                    back: document.getElementById("back"),
+                    play: document.getElementById("play"),
+                    stop: document.getElementById("stop"),
+                    next: document.getElementById("next")
+                };
+                var videoId = parseInt(localStorage.getItem(STORAGE_KEY) || prompt("Video-ID"));
+                var running = false;
+                var appActive = navigator.userAgent.indexOf('cordova-amazon-fireos') < 0;
+
+                function start()
+                {
+                    if(!appActive) return;
+                    running = true;
+                    localStorage.setItem(STORAGE_KEY, videoId);
+                    player.src = "http://dragonball-stream.com/data/se/an/dbz/vid/" + videoId + ".mp4";
+                    player
+                        .play()
+                        .then(function() 
+                        {
+                            controls.play.classList.add("d-none");
+                            controls.stop.classList.remove("d-none");
+                            player.requestFullscreen();
+                            player.currentTime = 60;
+
+                            player.onended = function(evt)
+                            {
+                                videoId++
+                                start();
+                            }
+                        })
+                        .catch(function()
+                        {
+                            stop();
+                        });
+                }
+
+                function stop()
+                {
+                    player.pause();
+                    controls.play.classList.remove("d-none");
+                    controls.stop.classList.add("d-none");  
+                    running = false; 
+                }
+
+                controls.back.addEventListener("click", function()
+                {
+                    videoId--;
+                    start();
+                });
+
+                controls.next.addEventListener("click", function()
+                {
+                    videoId++;
+                    start();
+                });
+
+                controls.play.addEventListener("click", function()
+                {
+                    start();
+                });
+
+                controls.stop.addEventListener("click", function()
+                {
+                    stop();
+                });
+
+                document.addEventListener("keyup", function(evt)
+                {
+                    if(!appActive) return;
+                    if(evt.keyCode === 179 && running)
+                    {
+                        stop()
+                    }
+                    else if(evt.keyCode === 179 && !running)
+                    {
+                        start();
+                    }
+                    else if(evt.keyCode === 227)
+                    {
+                        videoId--;
+                        start();
+                    }
+                    else if(evt.keyCode === 228)
+                    {
+                        videoId++;
+                        start();
+                    }
+                });
+
+                document.addEventListener("amazonPlatformReady" , function()
+                {
+                    document.addEventListener("pause", function() 
+                    {
+                        appActive = false;
+                        stop();
+                    });
+                    document.addEventListener("resume" , function()
+                    {
+                        appActive = true;
+                        start();
+                    });
+
+                    appActive = true;
+                    start();
+                });
+
+                start();
+            })();
+        </script>
+    </body>
+</html>
