@@ -32,7 +32,7 @@
                         <i class="fa fa-play"></i>
                     </button>
                     <button id="stop" class="btn btn-primary btn-lg btn-block d-none mt-0">
-                        <i class="fa fa-stop"></i>
+                        <i class="fa fa-pause"></i>
                     </button>
                 </div>
 
@@ -136,6 +136,14 @@
                     {
                         videoId++;
                         start();
+                    }
+                    else if(evt.keyCode === 37)
+                    {
+                        player.currentTime -= 10;
+                    }
+                    else if(evt.keyCode ==== 39)
+                    {
+                        player.currentTime += 10;
                     }
                 });
 
